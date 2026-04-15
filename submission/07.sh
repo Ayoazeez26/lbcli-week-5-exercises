@@ -13,3 +13,5 @@ OP_CHECKMULTISIG="ae"
 PUSH_PUBKEY="21"  # 33 bytes per compressed pubkey
 
 redeem_script="${OP_2}${PUSH_PUBKEY}${publicKey1}${PUSH_PUBKEY}${publicKey2}${PUSH_PUBKEY}${publicKey3}${OP_3}${OP_CHECKMULTISIG}"
+
+echo "$redeem_script"
