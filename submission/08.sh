@@ -27,4 +27,6 @@ OP_DROP="75"
 PUSH_PUBKEY="21"
 OP_CHECKSIG="ac"
 
-csv_script="${PUSH_3_BYTES}${csv_le}${OP_CSV}${OP_DROP}${PUSH_PUBKEY}${publicKey}${OP_CHECKSIG}
+csv_script="${PUSH_3_BYTES}${csv_le}${OP_CSV}${OP_DROP}${PUSH_PUBKEY}${publicKey}${OP_CHECKSIG}"
+
+echo "$csv_script"
