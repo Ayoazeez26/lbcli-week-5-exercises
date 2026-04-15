@@ -6,7 +6,12 @@ timestamp=1495584032
 
 timestamp_le=$(printf '%08x' $timestamp | sed 's/\(..\)\(..\)\(..\)\(..\)/\4\3\2\1/')
 
-pubkey_hash=$(echo "$publicKey" | xxd -r -p | openssl dgst -sha256 -binary | openssl dgst -ripemd160 -binary | xxd -p -c 20)
+pubkey_hash=$(python3 -c "
+import hashlib
+pk = bytes.fromhex('$publicKey')
+sha = hashlib.sha256(pk).digest()
+print(hashlib.new('ripemd160', sha).digest().hex())
+")
 
 PUSH_4="04"
 OP_CLTV="b1"
