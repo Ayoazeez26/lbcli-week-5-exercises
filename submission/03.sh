@@ -4,8 +4,6 @@ transaction="020000000121654fa95d5a268abf96427e3292baed6c9f6d16ed9e80511070f9548
 
 multisig_script=$(bitcoin-cli -regtest decoderawtransaction "$transaction" | jq -r '.vin[0].scriptSig.asm' | awk '{print $NF}')
 
-witness_program_info=$(bitcoin-cli -regtest decodescript "$multisig_script")
+witness_hex=$(bitcoin-cli -regtest decodescript "$multisig_script" | jq -r '.segwit.hex')
 
-witness_program_hex=$(echo "$witness_program_info" | jq -r '.segwit.hex')
-
-p2sh_address=$(bitcoin-cli -regtest decodescript "$witness_program_hex" | jq -r '.p2sh')
+bitcoin-cli -regtest decodescript "$witness_hex" | jq -r '.p2sh'
