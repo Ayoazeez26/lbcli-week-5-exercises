@@ -18,5 +18,3 @@ OP_EQUALVERIFY="88"
 OP_CHECKSIG="ac"
 
 cltv_script="${PUSH_4}${timestamp_le}${OP_CLTV}${OP_DROP}${OP_DUP}${OP_HASH160}${PUSH_20}${pubkey_hash}${OP_EQUALVERIFY}${OP_CHECKSIG}"
-
-bitcoin-cli -regtest decodescript "$cltv_script"
