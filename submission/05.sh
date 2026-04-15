@@ -16,4 +16,4 @@ pubkey_push_len="21"
 
 csv_script="${blocks_push_len}${blocks_le}${OP_CSV}${OP_DROP}${pubkey_push_len}${publicKey}${OP_CHECKSIG}"
 
-bitcoin-cli -regtest decodescript "$csv_script"
+echo "$csv_script"
